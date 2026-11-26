@@ -19,32 +19,64 @@ async function cariCuaca() {
   hasil.textContent = "Memuat...";
 
   try {
-    // 1. Ubah nama kota menjadi koordinat
-    const urlKota =
-      "https://geocoding-api.open-meteo.com/v1/search?count=1&language=id&name=" +
+    const url =
+      "https://geocoding-api.open-meteo.com/v1/search?count=10&language=id&name=" +
       encodeURIComponent(kota);
-    const resKota = await fetch(urlKota);
-    const dataKota = await resKota.json();
+    const res = await fetch(url);
+    const data = await res.json();
 
-    if (!dataKota.results) {
-      hasil.textContent = "Kota tidak ditemukan.";
+    if (!data.results) {
+      hasil.textContent = "Lokasi tidak ditemukan.";
       return;
     }
 
-    const tempat = dataKota.results[0];
+    tampilkanDaftar(data.results);
+  } catch (error) {
+    hasil.textContent = "Gagal mengambil data. Cek koneksi internetmu.";
+  }
+}
 
-    // 2. Ambil cuaca berdasarkan koordinat
-    const urlCuaca =
+function namaLengkap(tempat) {
+  return [tempat.name, tempat.admin3, tempat.admin2, tempat.admin1]
+    .filter(Boolean)
+    .filter(function (nilai, i, arr) {
+      return arr.indexOf(nilai) === i;
+    })
+    .join(", ");
+}
+
+function tampilkanDaftar(daftar) {
+  hasil.innerHTML = "";
+
+  const judul = document.createElement("p");
+  judul.textContent = "Pilih lokasi:";
+  hasil.appendChild(judul);
+
+  daftar.forEach(function (tempat) {
+    const tombol = document.createElement("button");
+    tombol.className = "pilihan-lokasi";
+    tombol.textContent = namaLengkap(tempat) + " (" + tempat.country + ")";
+    tombol.addEventListener("click", function () {
+      tampilkanCuaca(tempat);
+    });
+    hasil.appendChild(tombol);
+  });
+}
+
+async function tampilkanCuaca(tempat) {
+  hasil.textContent = "Memuat...";
+
+  try {
+    const url =
       "https://api.open-meteo.com/v1/forecast?current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code" +
       "&latitude=" + tempat.latitude +
       "&longitude=" + tempat.longitude;
-    const resCuaca = await fetch(urlCuaca);
-    const dataCuaca = await resCuaca.json();
-    const sekarang = dataCuaca.current;
+    const res = await fetch(url);
+    const data = await res.json();
+    const sekarang = data.current;
 
-    // 3. Tampilkan
     hasil.innerHTML =
-      '<p class="kota">' + tempat.name + ", " + tempat.country + "</p>" +
+      '<p class="kota">' + namaLengkap(tempat) + "</p>" +
       '<div class="suhu">' + Math.round(sekarang.temperature_2m) + "°C</div>" +
       "<p>" + artiKode(sekarang.weather_code) + "</p>" +
       '<div class="detail">' +

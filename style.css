@@ -95,3 +95,16 @@ footer {
     font-size: 44px;
   }
 }
+
+.pilihan-lokasi {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  text-align: left;
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.pilihan-lokasi:hover {
+  background: #e5e7eb;
+}
