@@ -1,0 +1,91 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f4f8;
+  font-family: Arial, sans-serif;
+  padding: 16px;
+}
+
+.kalkulator {
+  width: 100%;
+  max-width: 320px;
+  background: #1f2937;
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.layar {
+  background: #111827;
+  color: white;
+  text-align: right;
+  font-size: 36px;
+  padding: 20px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.tombol-wadah {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+button {
+  padding: 18px 0;
+  font-size: 20px;
+  border: none;
+  border-radius: 8px;
+  background: #374151;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(1.2);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.abu {
+  background: #6b7280;
+}
+
+.oranye {
+  background: #f59e0b;
+}
+
+.lebar {
+  grid-column: span 2;
+}
+
+.tinggi {
+  grid-row: span 2;
+}
+
+button.ditekan {
+  transform: scale(0.95);
+  filter: brightness(1.4);
+}
+
+.riwayat {
+  color: #9ca3af;
+  text-align: right;
+  font-size: 16px;
+  min-height: 24px;
+  padding: 0 16px;
+  margin-bottom: 4px;
+  overflow-x: auto;
+  white-space: nowrap;
+}

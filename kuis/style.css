@@ -1,0 +1,98 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 60px 16px 20px;
+  background-color: #f0f4f8;
+  font-family: Arial, sans-serif;
+}
+
+.kotak {
+  width: 100%;
+  max-width: 480px;
+  height: fit-content;
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin-top: 0;
+  text-align: center;
+  color: #2563eb;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+#progres {
+  color: #6b7280;
+  text-align: center;
+}
+
+.opsi {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 12px;
+  font-size: 16px;
+  text-align: left;
+  background: #f3f4f6;
+  color: #111827;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.opsi:hover {
+  background: #e5e7eb;
+}
+
+.opsi.benar {
+  background: #bbf7d0;
+  border-color: #22c55e;
+}
+
+.opsi.salah {
+  background: #fecaca;
+  border-color: #ef4444;
+}
+
+#tombolLanjut {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.sembunyi {
+  display: none;
+}
+
+#rekor {
+  text-align: center;
+  color: #b45309;
+  font-weight: bold;
+  margin: 0 0 8px;
+}
+
+#waktu {
+  text-align: center;
+  font-weight: bold;
+  color: #2563eb;
+}
+
+#waktu.genting {
+  color: #ef4444;
+}
