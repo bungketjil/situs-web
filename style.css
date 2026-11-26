@@ -108,3 +108,31 @@ footer {
 .pilihan-lokasi:hover {
   background: #e5e7eb;
 }
+
+.prakiraan {
+  margin-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.hari {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  color: #374151;
+}
+
+.hari span:first-child {
+  flex: 1;
+  text-align: left;
+}
+
+.hari span:nth-child(2) {
+  flex: 1;
+  text-align: center;
+}
+
+.hari span:last-child {
+  flex: 1;
+  text-align: right;
+}
